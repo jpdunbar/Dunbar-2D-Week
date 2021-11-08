@@ -249,7 +249,7 @@ Transform:
   m_GameObject: {fileID: 8246324}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.20000002, y: 0.6, z: 1}
+  m_LocalScale: {x: 0.20000002, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 894402966}
   m_RootOrder: 0
@@ -281,7 +281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 21964781}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.099999845, z: 0}
+  m_LocalPosition: {x: 0.4, y: -0.099999845, z: 0}
   m_LocalScale: {x: 0.19999994, y: 0.8000003, z: 1}
   m_Children: []
   m_Father: {fileID: 1362427983}
@@ -2481,7 +2481,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596735796}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.099999964, z: 0}
+  m_LocalPosition: {x: -0.4, y: -0.099999964, z: 0}
   m_LocalScale: {x: 0.19999996, y: 0.8000003, z: 1}
   m_Children: []
   m_Father: {fileID: 1362427983}
@@ -2773,12 +2773,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Travel
+  m_text: 'Swift
 
-    Press WASD to move, space to jump, and e for the menu!
+    Get to the end, collect coins, and jump on enemies.
 
-    Collect
-    coins and jump on enemies!'
+    Press
+    WASD to move, space to jump, and e for the menu.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3105,7 +3105,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.5}
+  m_Offset: {x: -0.055, y: 0.35}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3116,7 +3116,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.5, y: 0.62}
   m_EdgeRadius: 0
 --- !u!114 &2051660578
 MonoBehaviour:
@@ -3130,7 +3130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1872ae72e3c24b4e80117b4a5b01d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 1800
+  runSpeed: 1600
   jumpSpeed: 10
   spriteRenderer: {fileID: 98129131}
   animator: {fileID: 98129132}
