@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
         rigidBody2D = GetComponent<Rigidbody2D>();
         intro.gameObject.SetActive(true);
         background.gameObject.SetActive(true);
-        numberLives = 5;
+        numberLives = 3;
         numberCoins = 0;
         lives.text = "Lives: " + numberLives.ToString();
         coins.text = "Coins: " + numberCoins.ToString();
