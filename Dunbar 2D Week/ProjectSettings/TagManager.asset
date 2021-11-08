@@ -9,6 +9,7 @@ TagManager:
   - HitPlayerLeft
   - HitPlayerRight
   - Coin
+  - Win
   layers:
   - Default
   - TransparentFX

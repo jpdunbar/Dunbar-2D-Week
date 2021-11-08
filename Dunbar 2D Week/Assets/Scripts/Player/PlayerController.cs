@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI lose;
     public Image background;
     private bool menu;
+    private bool gameOver;
     private float wait;
     private float reset;
     int numberLives;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
         wait = 0.1f;
         reset = 0f;
         menu = true;
+        gameOver = false;
         rigidBody2D = GetComponent<Rigidbody2D>();
         intro.gameObject.SetActive(true);
         background.gameObject.SetActive(true);
@@ -53,7 +55,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1") && menu == true && wait >= 0.1f && numberLives > 0)
+        if (Input.GetButtonDown("Fire1") && menu == true && wait >= 0.1f && gameOver != true)
         {
             lives.gameObject.SetActive(true);
             coins.gameObject.SetActive(true);
@@ -63,7 +65,7 @@ public class PlayerController : MonoBehaviour
             wait = 0;
         }
 
-        if (Input.GetButtonDown("Fire1") && menu == false && wait >= 0.1f && numberLives > 0)
+        if (Input.GetButtonDown("Fire1") && menu == false && wait >= 0.1f && gameOver != true)
         {
             lives.gameObject.SetActive(false);
             coins.gameObject.SetActive(false);
@@ -80,6 +82,11 @@ public class PlayerController : MonoBehaviour
             coins.gameObject.SetActive(false);
             lose.gameObject.SetActive(true);
             background.gameObject.SetActive(true);
+            gameOver = true;
+        }
+
+        if(gameOver == true)
+        {
             reset += Time.deltaTime;
         }
 
@@ -171,6 +178,14 @@ public class PlayerController : MonoBehaviour
                 numberCoins += 1;
                 coins.text = "Coins: " + numberCoins.ToString();
             }
+        }
+        if (other.gameObject.CompareTag("Win"))
+        {
+            lives.gameObject.SetActive(false);
+            coins.gameObject.SetActive(false);
+            win.gameObject.SetActive(true);
+            background.gameObject.SetActive(true);
+            gameOver = true;
         }
     }
 }
