@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Animator animator;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -23,12 +22,14 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
+            //Jump();
             int levelMask = LayerMask.GetMask("Level");
-
+            
             if(Physics2D.BoxCast(transform.position, new Vector2(1, .1f), 0f, Vector2.down, .01f, levelMask))
             {
                 Jump();
             }
+            
         }
     }
 
@@ -50,6 +51,16 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = true;
         }
 
+        if (rigidBody2D.velocity.x > 15)
+        {
+            rigidBody2D.velocity = new Vector2(10, rigidBody2D.velocity.y);
+        }
+
+        if (rigidBody2D.velocity.x < -15)
+        {
+            rigidBody2D.velocity = new Vector2(-10, rigidBody2D.velocity.y);
+        }
+
         if (Mathf.Abs(horizontalInput) > 0f)
         {
             animator.SetBool("isRunning", true);
@@ -65,5 +76,26 @@ public class PlayerController : MonoBehaviour
     void Jump()
     {
         rigidBody2D.velocity = new Vector2(rigidBody2D.velocity.x, jumpSpeed);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("HitPlayerLeft"))
+        {
+            Vector2 moveAway = new Vector2(-800, 0);
+            rigidBody2D.AddForce(moveAway);
+        }
+        if (other.gameObject.CompareTag("HitPlayerRight"))
+        {
+            Vector2 moveAway = new Vector2(800, 0);
+            rigidBody2D.AddForce(moveAway);
+        }
+        if (other.gameObject.CompareTag("DestroyEnemy"))
+        {
+            if(other.transform.parent.gameObject != null)
+            {
+                Destroy(other.transform.parent.gameObject);
+            }
+        }
     }
 }

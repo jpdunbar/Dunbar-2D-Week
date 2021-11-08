@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - MoveEnemy
+  - DestroyEnemy
+  - HitPlayerLeft
+  - HitPlayerRight
   layers:
   - Default
   - TransparentFX
