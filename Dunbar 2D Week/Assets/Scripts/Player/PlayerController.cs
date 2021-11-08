@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public Image background;
     private bool menu;
     private float wait;
+    int numberLives;
+    int numberCoins;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +30,12 @@ public class PlayerController : MonoBehaviour
         wait = 0.1f;
         menu = true;
         rigidBody2D = GetComponent<Rigidbody2D>();
-        //lives.gameObject.SetActive(true);
-        //coins.gameObject.SetActive(true);
         intro.gameObject.SetActive(true);
-        //win.gameObject.SetActive(true);
         background.gameObject.SetActive(true);
+        numberLives = 5;
+        numberCoins = 0;
+        lives.text = "Lives: " + numberLives.ToString();
+        coins.text = "Coins: " + numberCoins.ToString();
     }
 
     // Update is called once per frame
@@ -48,7 +51,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1") && menu == true && wait >= 0.1f)
+        if (Input.GetButtonDown("Fire1") && menu == true && wait >= 0.1f && numberLives >= 0)
         {
             lives.gameObject.SetActive(true);
             coins.gameObject.SetActive(true);
@@ -57,7 +60,8 @@ public class PlayerController : MonoBehaviour
             menu = false;
             wait = 0;
         }
-        if (Input.GetButtonDown("Fire1") && menu == false && wait >= 0.1f)
+
+        if (Input.GetButtonDown("Fire1") && menu == false && wait >= 0.1f && numberLives >= 0)
         {
             lives.gameObject.SetActive(false);
             coins.gameObject.SetActive(false);
@@ -67,6 +71,14 @@ public class PlayerController : MonoBehaviour
             wait = 0;
         }
         wait += Time.deltaTime;
+
+        if(numberLives <= 0)
+        {
+            lives.gameObject.SetActive(false);
+            coins.gameObject.SetActive(false);
+            lose.gameObject.SetActive(true);
+            background.gameObject.SetActive(true);
+        }
     }
 
     void FixedUpdate()
@@ -116,13 +128,17 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("HitPlayerLeft"))
         {
-            Vector2 moveAway = new Vector2(-800, 0);
+            Vector2 moveAway = new Vector2(-900, 0);
             rigidBody2D.AddForce(moveAway);
+            numberLives -= 1;
+            lives.text = "Lives: " + numberLives.ToString();
         }
         if (other.gameObject.CompareTag("HitPlayerRight"))
         {
             Vector2 moveAway = new Vector2(800, 0);
             rigidBody2D.AddForce(moveAway);
+            numberLives -= 1;
+            lives.text = "Lives: " + numberLives.ToString();
         }
         if (other.gameObject.CompareTag("DestroyEnemy"))
         {
