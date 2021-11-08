@@ -156,5 +156,14 @@ public class PlayerController : MonoBehaviour
                 Destroy(other.transform.parent.gameObject);
             }
         }
+        if (other.gameObject.CompareTag("Coin"))
+        {
+            if (other.gameObject != null)
+            {
+                Destroy(other.gameObject);
+                numberCoins += 1;
+                coins.text = "Coins: " + numberCoins.ToString();
+            }
+        }
     }
 }

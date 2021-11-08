@@ -27,27 +27,6 @@ public class EnemyMove : MonoBehaviour
         timer += Time.deltaTime;
         Vector2 direction = new Vector2(runSpeed * Time.deltaTime * changeDirection, 0);
         rigidBody2D.AddForce(direction);
-        /*
-        if (timer < 3f)
-        {
-            Debug.Log("Here");
-            Vector2 direction = new Vector2(runSpeed * Time.deltaTime * changeDirection, 0);
-            rigidBody2D.AddForce(direction);
-        }
-        else
-        {
-            Debug.Log("There");
-            Vector2 direction = new Vector2(runSpeed * Time.deltaTime, 0);
-            rigidBody2D.AddForce(direction);
-        }
-        */
-
-        /*
-        if (timer > 6f)
-        {
-            timer = 0f;
-        }
-        */
 
         if (rigidBody2D.velocity.x < 0)
         {
