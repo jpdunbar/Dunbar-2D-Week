@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Fire1") && menu == true && wait >= 0.1f && numberLives >= 0)
+        if (Input.GetButtonDown("Fire1") && menu == true && wait >= 0.1f && numberLives > 0)
         {
             lives.gameObject.SetActive(true);
             coins.gameObject.SetActive(true);
@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
             wait = 0;
         }
 
-        if (Input.GetButtonDown("Fire1") && menu == false && wait >= 0.1f && numberLives >= 0)
+        if (Input.GetButtonDown("Fire1") && menu == false && wait >= 0.1f && numberLives > 0)
         {
             lives.gameObject.SetActive(false);
             coins.gameObject.SetActive(false);
@@ -137,14 +137,14 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("HitPlayerLeft"))
         {
-            Vector2 moveAway = new Vector2(-900, 0);
+            Vector2 moveAway = new Vector2(-1000, 0);
             rigidBody2D.AddForce(moveAway);
             numberLives -= 1;
             lives.text = "Lives: " + numberLives.ToString();
         }
         if (other.gameObject.CompareTag("HitPlayerRight"))
         {
-            Vector2 moveAway = new Vector2(800, 0);
+            Vector2 moveAway = new Vector2(1000, 0);
             rigidBody2D.AddForce(moveAway);
             numberLives -= 1;
             lives.text = "Lives: " + numberLives.ToString();
