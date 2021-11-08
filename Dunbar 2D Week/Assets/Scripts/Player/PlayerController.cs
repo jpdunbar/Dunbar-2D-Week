@@ -17,12 +17,15 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI coins;
     public TextMeshProUGUI intro;
     public TextMeshProUGUI win;
+    public TextMeshProUGUI lose;
     public Image background;
     private bool menu;
+    private float wait;
 
     // Start is called before the first frame update
     void Start()
     {
+        wait = 0.1f;
         menu = true;
         rigidBody2D = GetComponent<Rigidbody2D>();
         //lives.gameObject.SetActive(true);
@@ -45,14 +48,25 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Jump") && menu == true)
+        if (Input.GetButtonDown("Fire1") && menu == true && wait >= 0.1f)
         {
             lives.gameObject.SetActive(true);
             coins.gameObject.SetActive(true);
             intro.gameObject.SetActive(false);
             background.gameObject.SetActive(false);
             menu = false;
+            wait = 0;
         }
+        if (Input.GetButtonDown("Fire1") && menu == false && wait >= 0.1f)
+        {
+            lives.gameObject.SetActive(false);
+            coins.gameObject.SetActive(false);
+            intro.gameObject.SetActive(true);
+            background.gameObject.SetActive(true);
+            menu = true;
+            wait = 0;
+        }
+        wait += Time.deltaTime;
     }
 
     void FixedUpdate()
@@ -91,8 +105,6 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isRunning", false);
         }
-
-
     }
 
     void Jump()
