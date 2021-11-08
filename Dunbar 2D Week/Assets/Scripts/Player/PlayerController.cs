@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public Image background;
     private bool menu;
     private float wait;
+    private float reset;
     int numberLives;
     int numberCoins;
 
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         wait = 0.1f;
+        reset = 0f;
         menu = true;
         rigidBody2D = GetComponent<Rigidbody2D>();
         intro.gameObject.SetActive(true);
@@ -78,6 +80,13 @@ public class PlayerController : MonoBehaviour
             coins.gameObject.SetActive(false);
             lose.gameObject.SetActive(true);
             background.gameObject.SetActive(true);
+            reset += Time.deltaTime;
+        }
+
+        //Reset the game
+        if (reset >= 3)
+        {
+            SceneManager.LoadScene(0);
         }
     }
 
