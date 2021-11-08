@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool gameOver;
     private float wait;
     private float reset;
+    private float invincible;
     int numberLives;
     int numberCoins;
 
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         wait = 0.1f;
+        invincible = 0.1f;
         reset = 0f;
         menu = true;
         gameOver = false;
@@ -102,6 +104,8 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector2(transform.position.x-2,2);
             lives.text = "Lives: " + numberLives.ToString();
         }
+
+        invincible += Time.deltaTime;
     }
 
     void FixedUpdate()
@@ -149,19 +153,21 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("HitPlayerLeft"))
+        if (other.gameObject.CompareTag("HitPlayerLeft") && invincible > 0.2)
         {
             Vector2 moveAway = new Vector2(-1000, 0);
             rigidBody2D.AddForce(moveAway);
             numberLives -= 1;
             lives.text = "Lives: " + numberLives.ToString();
+            invincible = 0;
         }
-        if (other.gameObject.CompareTag("HitPlayerRight"))
+        if (other.gameObject.CompareTag("HitPlayerRight") && invincible > 0.2)
         {
             Vector2 moveAway = new Vector2(1000, 0);
             rigidBody2D.AddForce(moveAway);
             numberLives -= 1;
             lives.text = "Lives: " + numberLives.ToString();
+            invincible = 0;
         }
         if (other.gameObject.CompareTag("DestroyEnemy"))
         {
@@ -186,6 +192,7 @@ public class PlayerController : MonoBehaviour
             win.gameObject.SetActive(true);
             background.gameObject.SetActive(true);
             gameOver = true;
+            win.text = "You Win! \n Coins Collected " + numberCoins.ToString();
         }
     }
 }
