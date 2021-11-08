@@ -6,8 +6,18 @@ A 2D game where the player is trying to reach a flag while dodging enemies and g
 ## Implementation
 Built using Unity
 
-The  was downloaded from
-https://assetstore.unity.com/
+The enemy was downloaded from
+https://opengameart.org/content/cannon-bob
+
+The player was downloaded from
+https://opengameart.org/content/pixel-art-adventurer-sprites
+
+The coin was downloaded from
+https://kenney.nl/assets/jumper-pack
+
+The terrain and decorations were downloaded from
+https://kenney.nl/assets/pixel-platformer
+
 
 
 ## Created by
