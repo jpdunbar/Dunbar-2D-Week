@@ -18,7 +18,8 @@ https://kenney.nl/assets/jumper-pack
 The terrain and decorations were downloaded from
 https://kenney.nl/assets/pixel-platformer
 
-
+The background was downloaded from
+https://opengameart.org/content/sunny-land-2d-pixel-art-pack
 
 ## Created by
 Jamie Dunbar
