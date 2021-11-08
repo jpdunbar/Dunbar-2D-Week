@@ -92,7 +92,8 @@ public class PlayerController : MonoBehaviour
         if (transform.position.y < -5)
         {
             numberLives -= 1;
-            transform.position = new Vector2(transform.position.x-2,5);
+            transform.position = new Vector2(transform.position.x-2,2);
+            lives.text = "Lives: " + numberLives.ToString();
         }
     }
 
