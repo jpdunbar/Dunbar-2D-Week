@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         }
         wait += Time.deltaTime;
 
-        if(numberLives <= 0)
+        if (numberLives <= 0)
         {
             lives.gameObject.SetActive(false);
             coins.gameObject.SetActive(false);
@@ -87,6 +87,12 @@ public class PlayerController : MonoBehaviour
         if (reset >= 3)
         {
             SceneManager.LoadScene(0);
+        }
+
+        if (transform.position.y < -5)
+        {
+            numberLives -= 1;
+            transform.position = new Vector2(transform.position.x-2,5);
         }
     }
 
