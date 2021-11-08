@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+    using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,11 +18,18 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI intro;
     public TextMeshProUGUI win;
     public Image background;
+    private bool menu;
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidBody2D = GetComponent<Rigidbody2D>(); 
+        menu = true;
+        rigidBody2D = GetComponent<Rigidbody2D>();
+        //lives.gameObject.SetActive(true);
+        //coins.gameObject.SetActive(true);
+        intro.gameObject.SetActive(true);
+        //win.gameObject.SetActive(true);
+        background.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -37,9 +45,13 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && menu == true)
         {
-
+            lives.gameObject.SetActive(true);
+            coins.gameObject.SetActive(true);
+            intro.gameObject.SetActive(false);
+            background.gameObject.SetActive(false);
+            menu = false;
         }
     }
 
